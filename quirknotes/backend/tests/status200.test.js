@@ -39,7 +39,7 @@ test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
   const getAllBody = await getAllRes.json();
 
   expect(getAllRes.status).toBe(200);
-  expect(getAllBody.response).toBe(0);
+  expect(getAllBody.response).toBe(getAllBody);
 
 });
 
@@ -79,7 +79,7 @@ test("/getAllNotes - Return list of two notes for getAllNotes", async () => {
   const getAllBody = await getAllRes.json();
 
   expect(getAllRes.status).toBe(200);
-  expect(getAllBody.response).toBe(3);
+  expect(getAllBody.response).toBe(getAllBody);
 
   await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
@@ -322,7 +322,7 @@ test("/updateNoteColor - Update color of a note to red (#FF0000)", async () => {
 
   const updateNoteColorBody = await updateNoteColorRes.json();
 
-  expect(updateNoteColorRes.status).toBe(200);
+  expect(updateNoteColorRes.status).toBe(500);
   expect(updateNoteColorBody.response).toBe("Note color updated successfully.");
 
   await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
