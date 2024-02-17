@@ -24,6 +24,8 @@ test("/postNote - Post a note", async () => {
 
   expect(postNoteRes.status).toBe(200);
   expect(postNoteBody.response).toBe("Note added succesfully.");
+
+  await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
 
 test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
@@ -79,6 +81,7 @@ test("/getAllNotes - Return list of two notes for getAllNotes", async () => {
   expect(getAllRes.status).toBe(200);
   expect(getAllBody.response).toBe([]);
 
+  await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
 
 test("/deleteNote - Delete a note", async () => {
@@ -141,6 +144,8 @@ test("/patchNote - Patch with content and title", async () => {
 
   expect(patchNoteRes.status).toBe(200);
   expect(patchNoteBody.response).toBe(`Document with ID ${postNoteBody.insertedId} patched.`);
+
+  await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
 
 test("/patchNote - Patch with just title", async () => {
@@ -173,6 +178,8 @@ test("/patchNote - Patch with just title", async () => {
 
   expect(patchNoteRes.status).toBe(200);
   expect(patchNoteBody.response).toBe(`Document with ID ${postNoteBody.insertedId} patched.`);
+
+  await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
 
 test("/patchNote - Patch with just content", async () => {
@@ -205,6 +212,8 @@ test("/patchNote - Patch with just content", async () => {
 
   expect(patchNoteRes.status).toBe(200);
   expect(patchNoteBody.response).toBe(`Document with ID ${postNoteBody.insertedId} patched.`);
+
+  await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
 
 test("/deleteAllNotes - Delete one note", async () => {
@@ -315,4 +324,6 @@ test("/updateNoteColor - Update color of a note to red (#FF0000)", async () => {
 
   expect(updateNoteColorRes.status).toBe(200);
   expect(updateNoteColorBody.response).toBe("Note color updated successfully.");
+
+  await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
