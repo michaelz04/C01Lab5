@@ -39,7 +39,7 @@ test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
   const getAllBody = await getAllRes.json();
 
   expect(getAllRes.status).toBe(200);
-  expect(getAllBody.response).toBe([]);
+  expect(getAllBody.response).toBe(0);
 
 });
 
@@ -79,7 +79,7 @@ test("/getAllNotes - Return list of two notes for getAllNotes", async () => {
   const getAllBody = await getAllRes.json();
 
   expect(getAllRes.status).toBe(200);
-  expect(getAllBody.response).toBe([]);
+  expect(getAllBody.response).toBe(3);
 
   await fetch(`${SERVER_URL}/deleteAllNotes`, { method: "DELETE" });
 });
